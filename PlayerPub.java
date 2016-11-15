@@ -27,12 +27,13 @@ public class PlayerPub{
 		DataWriter dwriter = mgr.getWriter();
 		bjPlayerDataWriter bjPlayerWriter = bjPlayerDataWriterHelper.narrow(dwriter);
 		//dealer.bjd_action = shuffling;
-		//System.out.println("=== [Player "+ player.uuid +"] writing a message");
+		System.out.println("=== [Publisher] writing a message containing :");
+		System.out.println("    Player ID : " + player.uuid);	
 		bjPlayerWriter.register_instance(player);
 		int status = bjPlayerWriter.write(player, HANDLE_NIL.value);
 		ErrorHandler.checkStatus(status, "bjPlayerDataWriter.write");
 		try {
-			Thread.sleep(20000);
+			Thread.sleep(200);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
